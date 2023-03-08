@@ -1,13 +1,17 @@
 import {createTheme} from "@mui/material"
 
-export const theme = createTheme({
+export const theme = {
     palette: {
         primary:{
             // Light will be main, dark will be dark.
             main:"#fafafa",
+            dark:"#000"
         },
         secondary:{
-            main:"#0E0E2C",
+            main:"#424242",
+        },
+        complement:{
+            main:"#9e9e9e",
         },
         info:{
             main:"#5b97ff"
@@ -40,4 +44,4 @@ export const theme = createTheme({
         fontWeightBold:700,
         fontWeightExtraBold:800
     },
-});
+};

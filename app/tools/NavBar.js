@@ -1,5 +1,3 @@
-"use client";
-
 import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { SiSourcetree } from "react-icons/si";
@@ -81,8 +79,11 @@ export default function NavBar() {
     },
   ]);
   return (
-    <Box component={"nav"}>
-      <AppBar position="static">
+    <Box component={"nav"} sx={{
+      borderBottom: 1,
+      borderColor: "primary",
+    }}>
+      <AppBar elevation={0} position="static" color={"primary"}>
         <Toolbar
           sx={{
             display: "flex",
