@@ -7,9 +7,9 @@ export default function ToolsLayout({ children }) {
   return (
     <>
       <NavBar />
-      <main>
+      <Box component={"main"}>
         <Box>{children}</Box>
-      </main>
+      </Box>
     </>
   );
 }

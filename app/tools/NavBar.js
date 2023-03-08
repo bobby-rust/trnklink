@@ -80,8 +80,9 @@ export default function NavBar() {
   ]);
   return (
     <Box component={"nav"} sx={{
-      borderBottom: 1,
-      borderColor: "primary",
+      // borderBottom: 1,
+      // borderColor: "#000",
+      boxShadow: "0px 1px 1px 0px rgba(0,0,0,0.75)",
     }}>
       <AppBar elevation={0} position="static" color={"primary"}>
         <Toolbar
@@ -92,10 +93,14 @@ export default function NavBar() {
               md: "row",
             },
             alignItems: "center",
-            "@media all": {
+            height: {
               xs: 128,
-              md: 64,
-            },
+              md: 72
+            }
+            // "@media all": {
+            //   xs: 128,
+            //   md: 64,
+            // },
           }}
         >
           <Box
@@ -133,8 +138,8 @@ export default function NavBar() {
               },
             }}
           >
-            {tabs.map((tab) => (
-              <NavBarItem tab={tab} />
+            {tabs.map((tab, i) => (
+              <NavBarItem key={i} tab={tab} />
             ))}
           </Box>
 

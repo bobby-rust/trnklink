@@ -15,13 +15,13 @@ export default function RootLayout({ children }) {
   const [themeMode, setThemeMode] = useState(theme);
 
   useEffect(()=>{
-    setThemeMode({
-      ...themeMode,
-      palette:{
-        ...themeMode.palette,
-        mode:"light"
-      }
-    })
+    // setThemeMode({
+    //   ...themeMode,
+    //   palette:{
+    //     ...themeMode.palette,
+    //     mode:"light"
+    //   }
+    // })
   })
 
   return (
