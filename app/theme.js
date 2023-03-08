@@ -4,10 +4,10 @@ export const theme = createTheme({
     palette: {
         primary:{
             // Light will be main, dark will be dark.
-            main:"#0E0E2C",
+            main:"#fafafa",
         },
         secondary:{
-            main:"#fafafa",
+            main:"#0E0E2C",
         },
         info:{
             main:"#5b97ff"
@@ -33,7 +33,7 @@ export const theme = createTheme({
         },
     },
     typography:{
-        fontFamily:"Montserrat",
+        // fontFamily:"Montserrat",
         fontWeightLight: 400,
         fontWeightRegular: 500,
         fontWeightMedium: 600,

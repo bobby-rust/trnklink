@@ -6,9 +6,7 @@ import NavBar from "./NavBar";
 export default function ToolsLayout({ children }) {
   return (
     <>
-      <nav>
-        <NavBar />
-      </nav>
+      <NavBar />
       <main>
         <Box>{children}</Box>
       </main>

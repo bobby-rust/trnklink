@@ -1,18 +1,187 @@
 "use client";
 
-import { Box } from '@mui/material';
-import React, { useState } from 'react'
+import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { SiSourcetree } from "react-icons/si";
+import { RxSection } from "react-icons/rx";
+import {
+  MdOutlineShapeLine,
+  MdOutlineSettings,
+  MdQueryStats,
+} from "react-icons/md";
+
+export const NavBarItem = ({ tab }) => {
+  return (
+    <>
+      <Box
+        component={"a"}
+        href={"#"}
+        sx={{
+          display: "flex",
+          flexDirection: {
+            xs: "column",
+            md: "row",
+          },
+          alignItems: "center",
+        }}
+        px={1}
+        pt={{
+          xs: 0.5, md:0
+        }}
+        pb={{ xs: 1, md:0}}
+      >
+        <Box
+          component={"span"}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            "& svg": {
+              fontSize: 18,
+            },
+          }}
+          pr={0.7}
+          py={"auto"}
+        >
+          {tab.icon}
+        </Box>
+        <Box
+          component={"span"}
+          py={"auto"}
+          fontSize={15}
+          fontWeight={"regular"}
+        >
+          {tab.title}
+        </Box>
+      </Box>
+    </>
+  );
+};
 
 export default function NavBar() {
-    const [tabs, setTabs] = useState([
-        {
-            title:"",
-            icon: <></>
-        }
-    ])
+  const [tabs, setTabs] = useState([
+    {
+      title: "Links",
+      icon: <RxSection />,
+      href: "#",
+    },
+    {
+      title: "Customize",
+      icon: <MdOutlineShapeLine />,
+      href: "#",
+    },
+    {
+      title: "Statistics",
+      icon: <MdQueryStats />,
+      href: "#",
+    },
+    {
+      title: "Settings",
+      icon: <MdOutlineSettings />,
+      href: "#",
+    },
+  ]);
   return (
-    <Box>
+    <Box component={"nav"}>
+      <AppBar position="static">
+        <Toolbar
+          sx={{
+            display: "flex",
+            flexDirection: {
+              xs: "column",
+              md: "row",
+            },
+            alignItems: "center",
+            "@media all": {
+              xs: 128,
+              md: 64,
+            },
+          }}
+        >
+          <Box
+            component={"a"}
+            href={"#"}
+            sx={{
+              display: {
+                xs: "none",
+                md: "flex",
+              },
+              alignItems: "center",
+              height: "100%",
+            }}
+            p={3}
+            pr={4}
+          >
+            <SiSourcetree fontSize={20} />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent:{
+                xs:"space-between",
+                md:"flex-start"
+              },
+              height: "100%",
+              width: "100%",
+              gap: {
+                md:4
+              },
+              order: {
+                xs: 2,
+                md: 1,
+              },
+            }}
+          >
+            {tabs.map((tab) => (
+              <NavBarItem tab={tab} />
+            ))}
+          </Box>
 
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              height: "100%",
+              order: {
+                xs: 1,
+                md: 2,
+              },
+              width: {
+                xs: "100%",
+                md: "auto",
+              },
+            }}
+            py={"auto"}
+          >
+            <Box
+              component={"a"}
+              href={"#"}
+              sx={{
+                display: {
+                  xs: "flex",
+                  md: "none",
+                },
+              }}
+              p={3}
+              pl={0}
+            >
+              <SiSourcetree fontSize={20} />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                height: "100%",
+              }}
+            >
+              {/* Notifications, upgrade, share, profile button */}
+              <Typography>Test</Typography>
+            </Box>
+          </Box>
+        </Toolbar>
+      </AppBar>
     </Box>
-  )
+  );
 }

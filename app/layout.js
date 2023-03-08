@@ -1,4 +1,8 @@
+"use client";
+
 import './globals.css'
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { theme } from './theme';
 
 export const metadata = {
   title: 'TrnkLink: The all-in-one link in bio tool',
@@ -10,7 +14,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head />
       <body>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         {children}
+        </ThemeProvider>
       </body>
     </html>
   )
