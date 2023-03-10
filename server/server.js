@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config()
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -9,6 +10,7 @@ const mongoUrl = process.env.MONGO_URL
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({extended:false}));
 
 mongoose.connect(mongoUrl)

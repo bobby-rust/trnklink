@@ -4,12 +4,13 @@ require("dotenv").config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 let checkToken = (req, res, next) => {
-  let token = req.headers["x-access-token"] || req.headers["authorization"]; // Express headers are auto converted to lowercase
+  let token = req.cookies.jwt;
+  // let token = req.headers["x-access-token"] || req.headers["authorization"]; // Express headers are auto converted to lowercase
   if (token) {
-    if (token.startsWith("Bearer ")) {
-      // Remove Bearer from string
-      token = token.slice(7, token.length);
-    }
+  //   if (token.startsWith("Bearer ")) {
+  //     // Remove Bearer from string
+  //     token = token.slice(7, token.length);
+  //   }
   } else {
     return res.json({
       success: false,

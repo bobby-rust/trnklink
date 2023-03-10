@@ -8,7 +8,8 @@ export async function POST(req) {
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json",
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
+      "Cookie":cookies()
     },
     body: JSON.stringify({
       username,

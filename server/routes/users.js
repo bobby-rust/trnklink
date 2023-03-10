@@ -45,7 +45,6 @@ router.route("/register").post(async (req, res) => {
   
   router.route("/login").post(async (req, res) => {
     console.log(req.cookies)
-  console.log(req.cookie)
     const { username, password } = req.body;
   
     const user = await User.findOne({ username: username });
@@ -68,7 +67,8 @@ router.route("/register").post(async (req, res) => {
       if (res.status(200)) {
         return res.json({
           success: true,
-          message: "User logged in."
+          message: "User logged in.",
+          token:token
         });
       } else {
         return res.json({ success: false, message: "Error logging in." });

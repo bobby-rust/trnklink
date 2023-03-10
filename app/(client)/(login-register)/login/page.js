@@ -15,6 +15,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
+import { logoutUser } from "../../../api/logoutUser";
 
 export default function LoginPage() {
   const {values, touched, errors, handleBlur, handleChange, handleSubmit, isSubmitting} = useFormik({
@@ -27,6 +28,8 @@ export default function LoginPage() {
       await fetch("/api/user/login", {method:"POST",body: JSON.stringify(values)}).then((res) => res.json()).then((data) => {
         if(data.success){
           toast.success(data.message);
+          console.log( data.token)
+          document.cookie = "jwt=" + data.token;
           // window.location.href = "/tools";
         } else {
           toast.error(data.message);
