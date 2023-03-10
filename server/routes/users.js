@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-let User = require("../models/users.model");
+const User = require("../models/user.model");
 require("dotenv").config();
 
-// const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET;
 // const SERVER_DOMAIN = process.env.SERVER_DOMAIN;
 // const APP_DOMAIN = process.env.APP_DOMAIN;
 
@@ -19,12 +19,13 @@ router.route("/register").post(async (req, res) => {
   
     try {
       const userEmailExists = await User.findOne({ email: email });
-      if (userEmailExists) {
-        return res.send({ success: false, message: "Email is already in use." });
-      }
       const usernameExists = await User.findOne({ username: username });
-      if (userEmausernameExistsilExists) {
-        return res.send({ success: false, message: "Username is already in use." });
+      if (userEmailExists) {
+        return res.send({ success: false, message: "Email is already in use" });
+      }
+      await User.findOne({ username: username });
+      if (usernameExists) {
+        return res.send({ success: false, message: "Username is already in use" });
       }
       await User.create({
         email: email,
@@ -35,48 +36,46 @@ router.route("/register").post(async (req, res) => {
   
       return res.send({
         success: true,
-        message: "User Registered Successfully.",
+        message: "User created successfully.",
       });
     } catch (error) {
-      return res.send({ success: false, message: "Error Registering User." });
+      return res.send({ success: false, message: "Error creating user" });
     }
   });
   
   router.route("/login").post(async (req, res) => {
-    const { email, password } = req.body;
+    console.log(req.cookies)
+  console.log(req.cookie)
+    const { username, password } = req.body;
   
-    const user = null;
-
-    if(email.includes("@")){
-        user = await User.findOne({ email: email });
-    } else {
-        user = await User.findOne({ username: email });
-    }
+    const user = await User.findOne({ username: username });
 
     if (!user) {
-      return res.send({ success: false, message: "User doesn't exist." });
+      return res.send({ success: false, message: "User doesn't exist" });
     }
   
     if (await bcrypt.compare(password, user.password)) {
-      const token = jwt.sign({ email: email, _id: user._id }, JWT_SECRET, {
+      const token = jwt.sign({ email: user.email, username: user.username, _id: user._id }, JWT_SECRET, {
         expiresIn: "172d",
       });
   
       res.cookie("jwt", token, {
         expires: new Date(Date.now() + 500000),
-        httpOnly: false,
-        secure: false,
+        httpOnly: true,
+        secure: true,
       });
   
       if (res.status(200)) {
         return res.json({
           success: true,
-          message: "User Logged In Successfully.",
+          message: "User logged in."
         });
       } else {
-        return res.json({ success: false, message: "Error Logging In." });
+        return res.json({ success: false, message: "Error logging in." });
       }
     }
   
-    return res.json({ success: false, message: "Wrong password." });
+    return res.json({ success: false, message: "Incorrect password." });
   });
+
+module.exports = router;

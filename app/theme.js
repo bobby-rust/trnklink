@@ -18,7 +18,8 @@ export const theme = {
           hover:"#B54E2C" 
         },
         info:{
-            main:"#5b97ff"
+            main:"#5b97ff",
+            light: "#7aabff"
         },
         success:{
           main:"#07BC0C",
@@ -26,6 +27,7 @@ export const theme = {
         },
         error:{
             main:"#dc3545",
+            light:"#ed5a69"
         },
     },
     shape: {

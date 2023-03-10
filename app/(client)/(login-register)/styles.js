@@ -4,12 +4,20 @@ export const styles = {
     height: "100%",
   },
   title:{
-
+    fontWeight:"extraBold",
+    fontSize:{
+      xs:28,
+      md:38
+    },
+    lineHeight: 1.2,
+    // whiteSpace: "nowrap"
   },
   subtitle:{
-
+    fontWeight:"regular",
+    fontSize:16,
   },
   button: {
+    fontSize:16,
     fontWeight: "medium",
     backgroundColor: "accent.main",
     borderRadius: 1,
@@ -21,6 +29,9 @@ export const styles = {
     },
   },
   input:{
+    "&.input-error":{
+      borderColor: 'error',
+    },
     "&.MuiTextField-root":{
       borderRadius: 1,
     },
