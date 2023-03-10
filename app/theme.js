@@ -13,6 +13,10 @@ export const theme = {
         complement:{
             main:"#9e9e9e",
         },
+        accent:{
+          main:"#CF5C36",
+          hover:"#B54E2C" 
+        },
         info:{
             main:"#5b97ff"
         },

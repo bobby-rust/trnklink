@@ -7,6 +7,7 @@ import {
   MdOutlineSettings,
   MdQueryStats,
 } from "react-icons/md";
+import { IoShapesOutline } from "react-icons/io5";
 
 export const NavBarItem = ({ tab }) => {
   return (
@@ -64,7 +65,7 @@ export default function NavBar() {
     },
     {
       title: "Customize",
-      icon: <MdOutlineShapeLine />,
+      icon: <IoShapesOutline />,
       href: "#",
     },
     {
@@ -79,12 +80,13 @@ export default function NavBar() {
     },
   ]);
   return (
-    <Box component={"nav"} sx={{
-      // borderBottom: 1,
-      // borderColor: "#000",
-      boxShadow: "0px 1px 1px 0px rgba(0,0,0,0.75)",
-    }}>
-      <AppBar elevation={0} position="static" color={"primary"}>
+      <AppBar component={"nav"} elevation={0} position="sticky" color={"primary"} sx={{
+        boxShadow: "0px 1px 1px 0px rgba(0,0,0,0.75)",
+        height: {
+          xs: 128,
+          md: 72
+        }
+      }}>
         <Toolbar
           sx={{
             display: "flex",
@@ -93,10 +95,7 @@ export default function NavBar() {
               md: "row",
             },
             alignItems: "center",
-            height: {
-              xs: 128,
-              md: 72
-            }
+            height: "100%"
             // "@media all": {
             //   xs: 128,
             //   md: 64,
@@ -188,6 +187,5 @@ export default function NavBar() {
           </Box>
         </Toolbar>
       </AppBar>
-    </Box>
   );
 }
