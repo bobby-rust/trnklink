@@ -9,7 +9,7 @@ export async function POST(req) {
       "Content-Type": "application/json",
       "Accept": "application/json",
       "Access-Control-Allow-Origin": "*",
-      "Cookie":cookies()
+      authorization: `Bearer ${cookies().get("jwt").value}`
     },
     body: JSON.stringify({
       username,
