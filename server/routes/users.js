@@ -44,7 +44,6 @@ router.route("/register").post(async (req, res) => {
   });
   
   router.route("/login").post(async (req, res) => {
-    console.log(req.cookies)
     const { username, password } = req.body;
   
     const user = await User.findOne({ username: username });
@@ -55,11 +54,11 @@ router.route("/register").post(async (req, res) => {
   
     if (await bcrypt.compare(password, user.password)) {
       const token = jwt.sign({ email: user.email, username: user.username, _id: user._id }, JWT_SECRET, {
-        expiresIn: "172d",
+        expiresIn: "2h",
       });
   
       res.cookie("jwt", token, {
-        expires: new Date(Date.now() + 500000),
+        maxAge: (2 * 60 * 60 * 1000), // 1 hour * 2
         httpOnly: true,
         secure: true,
       });

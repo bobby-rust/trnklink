@@ -43,7 +43,7 @@ export const theme = {
         },
     },
     typography:{
-        // fontFamily:"Montserrat",
+        fontFamily:"Montserrat",
         fontWeightLight: 400,
         fontWeightRegular: 500,
         fontWeightMedium: 600,

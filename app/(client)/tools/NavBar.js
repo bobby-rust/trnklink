@@ -14,7 +14,7 @@ export const NavBarItem = ({ tab }) => {
     <>
       <Box
         component={"a"}
-        href={"#"}
+        href={tab.href}
         sx={{
           display: "flex",
           flexDirection: {
@@ -61,22 +61,22 @@ export default function NavBar() {
     {
       title: "Links",
       icon: <RxSection />,
-      href: "#",
+      href: "tools",
     },
     {
       title: "Customize",
       icon: <IoShapesOutline />,
-      href: "#",
+      href: "tools/customize",
     },
     {
       title: "Statistics",
       icon: <MdQueryStats />,
-      href: "#",
+      href: "tools/stats",
     },
     {
       title: "Settings",
       icon: <MdOutlineSettings />,
-      href: "#",
+      href: "tools/settings",
     },
   ]);
   return (

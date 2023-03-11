@@ -8,13 +8,14 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styles } from "../styles";
 import { registerValidationSchema } from "../(validation)/register.validation";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
+import Cookies from "js-cookie";
 
 export default function RegisterPage() {
   const {values, touched, errors, handleBlur, handleChange, handleSubmit, isSubmitting} = useFormik({
@@ -35,6 +36,12 @@ export default function RegisterPage() {
       });
     },
   });
+
+  useEffect(()=>{
+    if(Cookies.get("jwt")){
+      window.location.href = "/tools";
+    }
+  },[]);
 
   return (
     <Box

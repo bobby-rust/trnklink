@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import {
   createTheme,
@@ -9,25 +10,31 @@ import {
 import {theme} from '../theme';
 import { useEffect, useState } from "react";
 import {Toaster} from 'react-hot-toast';
+import verifyLoginStatus from "./(login-register)/login/verifyLoginStatus";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
 
-export default function ClientLayout({ children }) {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [themeMode, setThemeMode] = useState(theme);
+export default function ClientLayout({ children}) {
+  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [themeMode, setThemeMode] = useState(createTheme(theme));
 
-  // useEffect(() => {
+  useEffect(() => {
     // setThemeMode({
     //   ...themeMode,
     //   palette:{
     //     ...themeMode.palette,
     //     mode:"light"
     //   }
-    // })
-  // });
+    // });
+    // verifyLoginStatus();
+    // setAppTheme(createTheme(theme));
+    console.log("Refreshed");
+  }, [themeMode]);
 
   return (
     <>
-      <ThemeProvider theme={createTheme(themeMode)}>
-        <CssBaseline />
+      <ThemeProvider theme={themeMode}>
+      <CssBaseline />
         {children}
         <Toaster
         position="bottom-right"

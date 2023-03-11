@@ -14,11 +14,24 @@ export const styles = {
   button: {
     backgroundColor: "accent.main",
     borderRadius: 1,
-    padding: 1,
-    textTransform: "none",
+    paddingX: 2,
     width: "100%",
+    textTransform: "none",
     "&:hover": {
       backgroundColor: "accent.hover",
+    },
+  },
+  button2: {
+    backgroundColor: "primary",
+    border: 1,
+    borderColor: "complement.main",
+    borderRadius: 1,
+    boxShadow: 1,
+    width: "100%",
+    paddingX: 2,
+    textTransform: "none",
+    "&:hover": {
+      // backgroundColor: "accent.hover",
     },
   },
 };
